@@ -1,0 +1,13 @@
+{
+	"name": "express-learning",
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"start": "node app/hello.js"
+	},
+	"dependencies": {
+		"express": "^4.18.2",
+		"sqlite3": "^5.1.7",
+		"sqlite": "^5.1.1"
+	}
+}
