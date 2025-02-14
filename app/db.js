@@ -1,19 +1,16 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+import Database from 'better-sqlite3';
 
 // データベース接続を初期化する関数
 export async function initializeDB() {
-    const db = await open({
-        filename: './database.sqlite',
-        driver: sqlite3.Database
-    });
+    const db = new Database('./database.sqlite');
 
     // テーブルを作成
-    await db.exec(`
-        CREATE TABLE IF NOT EXISTS users (
+    db.exec(`
+        CREATE TABLE IF NOT EXISTS todos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            email TEXT UNIQUE NOT NULL,
+            todo TEXT NOT NULL,
+            is_done INTEGER DEFAULT 0,
+            is_deleted INTEGER DEFAULT 0,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     `);
